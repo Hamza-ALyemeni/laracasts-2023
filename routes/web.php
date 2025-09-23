@@ -4,18 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
 Route::get('/', function () {
+    $job = Job::all();
     return view('welcome');
 });
 
 Route::get('/jobs', function (){
     return view('jobs',[
-        'jobs' => Job::allJobsArray()
+        'jobs' => Job::all()
     ]);
 });
 
 Route::get('/jobs/{id}', function ($id){
     //dd($id);
-    $job = Job::findJob($id);
+    $job = Job::find($id);
 
     //dd($job);
 
