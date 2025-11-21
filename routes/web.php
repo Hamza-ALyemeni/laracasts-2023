@@ -15,6 +15,10 @@ Route::get('/jobs', function (){
     ]);
 });
 
+Route::get('/jobs/create', function (){
+    dd('here');
+});
+
 Route::get('/jobs/{id}', function ($id){
     //dd($id);
     $job = Job::find($id);
