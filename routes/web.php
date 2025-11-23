@@ -10,13 +10,13 @@ Route::get('/', function () {
 
 Route::get('/jobs', function (){
     $jobs = Job::with('employer')->paginate(5);
-    return view('jobs',[
+    return view('jobs.index',[
         'jobs' => $jobs
     ]);
 });
 
 Route::get('/jobs/create', function (){
-    dd('here');
+    return view('jobs.create');
 });
 
 Route::get('/jobs/{id}', function ($id){
@@ -25,7 +25,7 @@ Route::get('/jobs/{id}', function ($id){
 
     //dd($job);
 
-    return view('job', [
+    return view('jobs.show', [
         'job' => $job
     ]);
 });
