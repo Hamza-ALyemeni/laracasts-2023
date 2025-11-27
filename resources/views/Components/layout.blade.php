@@ -33,9 +33,21 @@
                 <x-nav-link href="/" aria-current="page" :active="request()->is('/')">Home</x-nav-link>
                 <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
                 <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
-                <x-nav-link href="/contact" :active="request()->is('contact')" type="button">Something Else</x-nav-link>
               </div>
             </div>
+          </div>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            @guest 
+              <x-nav-link href="/login">Log in</x-nav-link>
+              <x-nav-link href="/register">Register</x-nav-link>
+            @endguest
+
+            @auth 
+              <form action="/logout" method="POST">
+                @csrf
+                <x-form-button href="/logout">Log out</x-form-button>
+              </form>
+            @endauth
           </div>
         </div>
       </div>
