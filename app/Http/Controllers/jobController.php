@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class jobController extends Controller
 {
@@ -62,7 +64,17 @@ class jobController extends Controller
      */
     public function edit(job $job)
     {
-        //
+        
+        // if (Auth::guest()){
+        //     return redirect('/login');
+        // }
+
+        // if ($job->employer->user->isNot(Auth::user())) {
+        //    abort(403);
+        // }
+
+       // Gate::authorize('edit-job', $job);
+
         return view('jobs.edit', [
             'job' => $job
         ]);
